@@ -31,3 +31,13 @@
     transform: rotate(360deg);
   }
 }
+
+.rightSpace {
+  padding-right: 50px;
+
+}
+
+.leftSpace {
+  padding-left: 50px;
+
+}

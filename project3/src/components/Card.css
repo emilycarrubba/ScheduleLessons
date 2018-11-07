@@ -1,0 +1,24 @@
+.cardBorder {
+    padding: 10px;
+    border: 5px solid red;
+    border-radius: 25px;
+    border-bottom: 10px;
+}
+
+.spanBar {
+
+    padding-bottom: 10px;
+    left: 25px;
+
+
+
+}
+
+.linkSpaceL {
+    padding-right: 25px;
+}
+
+.linkSpaceR {
+    padding-left: 25px;
+    padding-right: 50px;
+}
