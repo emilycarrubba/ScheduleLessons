@@ -19,7 +19,7 @@ class App extends Component {
               <div className="col-md-6 center rightSpace ">
                 <Card
                   cardTitle="Instructors"
-                  mainText="We understand you're a professional. Setup an account to start managing your business."
+                  mainText="We understand you're a professional. Setup an account to start today!"
                   liOne="Managing a business schedule made easy."
                   liTwo="We take care of in-app-promotion."
                   liThree="You are in full control."
@@ -29,9 +29,8 @@ class App extends Component {
               <div className="col-md-6 leftSpace ">
                 <Card
                   cardTitle="Students"
-                  mainText="Create your account and find an instructor today! Finding a mentor has
-          never been so easy."
-                  liOne="Search for Instructors in your area"
+                  mainText="Create your account and find an instructor today!"
+                  liOne="Search for Instructors in your area. It's never been so easy!"
                   liTwo="View prospective curriculum."
                   liThree="Schedule a day and time."
                   identity="Student"
