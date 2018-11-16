@@ -1,9 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Card.css";
 
-const Card = ({ cardTitle, mainText, liOne, liTwo, liThree, identity }) => (
+const Card = ({
+  cardTitle,
+  mainText,
+  liOne,
+  liTwo,
+  liThree,
+  identity,
+  pageLink,
+  servicePgLnk
+}) => (
   <div>
     <div className="card cardBorder">
+      {/*card content rendered from app.js page.*/}
       <div className="card-body">
         <h5 className="card-title">{cardTitle}</h5>
         <p className="card-text">{mainText}</p>
@@ -15,14 +26,12 @@ const Card = ({ cardTitle, mainText, liOne, liTwo, liThree, identity }) => (
       </ul>
       <div className="  col-md-12 spanBar">
         <div className="card-body">
-          <a href="http://google.com" className="card-link linkSpaceL">
+          <Link to={pageLink} className="card-link linkSpaceL">
             Create {identity} Account
-          </a>
+          </Link>
           <span style={{ padding: "15px" }}>{":"}</span>
 
-          <a href="http://google.com" className="card-link linkSpaceR">
-            More about this service.
-          </a>
+          <Link to={servicePgLnk}>More about this service.</Link>
         </div>
       </div>
     </div>

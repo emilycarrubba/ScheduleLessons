@@ -1,46 +1,32 @@
 import React, { Component } from "react";
 // import logo from "./logo.svg";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import "./App.css";
-import NavBar from "./components/NavBar";
-import Jumbotron from "./components/Jumbotron";
-import Card from "./components/Card";
+import LandingPage from "./components/LandingPage";
+import InstMainPg from "./components/instructorSignupPage/InstMainPg";
+import StuJumbo from "./components/StuPage";
+import InstService from "./components/InstService";
+import StuService from "./components/StuService";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <NavBar />
-        <Jumbotron />
-        {/*cards begin*/}
-        <div className="container">
-          <div className="row ">
-            <div className="center">
-              <div className="col-md-6 center rightSpace ">
-                <Card
-                  cardTitle="Instructors"
-                  mainText="We understand your a professional. Setup an account to start managing your business."
-                  liOne="Managing a business schedule made easy."
-                  liTwo="We take care of in-app-promotion."
-                  liThree="You are in full control."
-                  identity="Instructor"
-                />
-              </div>
-              <div className="col-md-6 leftSpace ">
-                <Card
-                  cardTitle="Students"
-                  mainText="Create your account and find an instructor today! Finding a mentor has
-          never been so easy."
-                  liOne="Search for Instructors in your area"
-                  liTwo="View prospective curriculum."
-                  liThree="Schedule a day and time."
-                  identity="Student"
-                />
-              </div>
-            </div>
-          </div>
+      <Router>
+        <div className="App">
+          <Route exact path="/" component={LandingPage} />
+
+          <Route exact path="/instrpage" component={InstMainPg} />
+          <Route exact path="/stupage" component={StuJumbo} />
+
+          <Route
+            exact
+            path="/instructor-service-info"
+            component={InstService}
+          />
+          <Route exact path="/student-service-info" component={StuService} />
         </div>
-      </div>
+      </Router>
     );
   }
 }

@@ -1,0 +1,38 @@
+/* nav {
+    padding: 10px;
+
+} */
+
+.navbar {
+    margin: 0;
+
+}
+
+/* .floatRight {
+
+    display: inline-block;
+
+} */
+/*moves the email passwrd signin to the right and 15px margin right. */
+.navCss {
+    float: right;
+    margin-right: 15px;
+}
+
+/* .navCss {
+    padding: 10px;
+    margin: 0;
+    display: inline-block;
+    
+
+
+
+} */
+
+
+
+
+/* form {
+    float: right;
+
+} */

@@ -1,14 +1,13 @@
 import React from "react";
 
-const Jumbotron = () => (
+const Jumbotron = ({ mainTitleDisplay, jIntro, topText }) => (
   <div>
     <div className="jumbotron jumbotron-fluid">
       <div className="container">
-        <p>Welcome to</p>
-        <h1 className="display-4">ScheduleLessons</h1>
-        <p className="lead">Scheduling made quick and simple.</p>
-      </div>
-    </div>
+        <p> {topText} </p> <h1 className="display-4"> {mainTitleDisplay} </h1>{" "}
+        <p className="lead">{jIntro} </p>{" "}
+      </div>{" "}
+    </div>{" "}
   </div>
 );
 
