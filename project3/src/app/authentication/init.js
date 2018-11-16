@@ -2,38 +2,64 @@ const passport = require('passport')
 const bcrypt = require('bcrypt')
 const LocalStrategy = require('passport-local').Strategy
 
+const authenticationMiddleware = require('./middleware')
+
+// Generate Password
+const saltRounds = 10
+const myPlaintextPassword = 'my-password'
+const salt = bcrypt.genSaltSync(saltRounds)
+const passwordHash = bcrypt.hashSync(myPlaintextPassword, salt)
+
 const user = {
   username: 'test-user',
-  passwordHash: 'bcrypt-hashed-password',
+  passwordHash,
   id: 1
 }
 
+function findUser (username, callback) {
+  if (username === user.username) {
+    return callback(null, user)
+  }
+  return callback(null)
+}
 
-// Once the findUser returns with our user object the only thing left is to compare the user's 
-// hashed password and the real password to see if there is a match. Always store passwords hashed 
-// and use fixed time comparison to avoid timing attacks.
-passport.use(new LocalStrategy(
- (username, password, done) => {
-    findUser(username, (err, user) => {
-      if (err) {
-        return done(err)
-      }
+passport.serializeUser(function (user, cb) {
+  cb(null, user.username)
+})
 
-      // User not found
-      if (!user) {
-        return done(null, false)
-      }
+passport.deserializeUser(function (username, cb) {
+  findUser(username, cb)
+})
 
-      // Always use hashed passwords and fixed time comparison
-      bcrypt.compare(password, user.passwordHash, (err, isValid) => {
+function initPassport () {
+  passport.use(new LocalStrategy(
+    (username, password, done) => {
+      findUser(username, (err, user) => {
         if (err) {
           return done(err)
         }
-        if (!isValid) {
+
+        // User not found
+        if (!user) {
+          console.log('User not found')
           return done(null, false)
         }
-        return done(null, user)
+
+        // Always use hashed passwords and fixed time comparison
+        bcrypt.compare(password, user.passwordHash, (err, isValid) => {
+          if (err) {
+            return done(err)
+          }
+          if (!isValid) {
+            return done(null, false)
+          }
+          return done(null, user)
+        })
       })
-    })
-  }
-))
+    }
+  ))
+
+  passport.authenticationMiddleware = authenticationMiddleware
+}
+
+module.exports = initPassport

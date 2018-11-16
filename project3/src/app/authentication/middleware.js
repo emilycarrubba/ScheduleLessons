@@ -7,3 +7,5 @@ function authenticationMiddleware () {
       res.redirect('/')
     }
   }
+  
+  module.exports = authenticationMiddleware
